@@ -13,48 +13,33 @@ async function getArticleCategory() {
 // await getArticleCategory()
 
 function getNavLinks (navigation: NavItem[]) {
-  const allArticles = []
+  const links: Array<{ label: string, to: string }> = []
   for (const item of navigation) {
     const { title, _path, children } = item
-    links.value.push({  
+    links.push({  
       label: title,
-      to: _path,
-      click: () => {
-        articleStore.setArticlesByCategory(children?.length ? children : [])
-      }
+      to: _path
     })
-    children?.length ? allArticles.push(...children) : null
   }
-  articleStore.setArticlesByCategory(allArticles)
+  return links
 }
 </script>
 
 <template>
-  <!-- <UVerticalNavigation 
-    class="w-48"
-    :ui="{
-      wrapper: 'box-border space-y-2',
-      base: 'group block border-s -ms-px leading-6 before:hidden',
-      padding: 'p-1 ps-4',
-      rounded: '',
-      font: '',
-      ring: '',
-      active: 'text-sky-500 dark:text-sky-400 border-current font-semibold',
-      inactive: 'border-s border-gray-200 hover:border-sky-300 dark:border-gray-800 dark:hover:border-gray-500   text-gray-700 hover:text-sky-300 dark:text-gray-400 dark:hover:text-gray-300'
-    }"
-    :links="links"
-  >
-    <template #default="{ link }">
-      <span class="group-hover:text-sky-500 relative">{{ link.label }}</span>
-    </template>
-  </UVerticalNavigation> -->
-  <ContentNavigation v-slot="{ navigation }">
-    <ul>
-      <li v-for="link of navigation" :key="link._path">
-        <NuxtLink :to="link._path">{{ link.title }}</NuxtLink>
-      </li>
-    </ul>
-  </ContentNavigation>
+  <aside>
+    <ContentNavigation v-slot="{ navigation }">
+      <UVerticalNavigation 
+        :ui="{
+          wrapper: 'py-4 sm:py-6 lg:py-8',
+        }"
+        :links="getNavLinks(navigation)"
+      >
+        <template #default="{ link }">
+          <span class="group-hover:text-sky-500 relative">{{ link.label }}</span>
+        </template>
+      </UVerticalNavigation>
+    </ContentNavigation>
+  </aside>
 </template>
 
 <style lang='scss' scoped>

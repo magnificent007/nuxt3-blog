@@ -22,13 +22,16 @@ defineProps({
             >
               <span class="h-4 w-0.5 rounded-full bg-gray-200 dark:bg-gray-500"></span>
             </span>
-            <span>{{ article.title }}</span>
+            <span>{{ article.title || '无标题' }}</span>
             
           </h2>
           <p class="flex-1 relative z-10 my-2 text-base text-zinc-500 dark:text-gray-400">
             {{ article.description }}
           </p>
-          <span class="text-sm font-normal text-zinc-400 dark:text-gray-400">{{ article.published }}</span>
+          <div class="w-full flex flex-wrap justify-between">
+            <span class="text-sm font-normal text-zinc-400 dark:text-gray-400">作者：{{ article.author || '佚名' }}</span>
+            <span class="text-sm font-normal text-zinc-400 dark:text-gray-400">{{ article.published}}</span>
+          </div>
         </div>
       </section>
     </article>

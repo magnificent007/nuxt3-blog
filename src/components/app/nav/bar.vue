@@ -8,7 +8,7 @@ const links = [
     }
   },
   {
-    label: '新闻中心',
+    label: '文章',
     to: '/articles',
     click: () => {
       isExpand.value = false

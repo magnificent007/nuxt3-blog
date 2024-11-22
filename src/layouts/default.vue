@@ -5,7 +5,7 @@
   <div>
   <!-- <div class="w-screen h-screen overflow-y-auto flex flex-col"> -->
     <!-- <AppNavBar /> -->
-    <UContainer :ui="{ padding: '', constrained: 'w-full' }">
+    <UContainer :ui="{ base: 'box-border', padding: 'py-4 sm:py-6 lg:py-8', constrained: 'w-full' }">
       <slot />
     </UContainer>
   </div>

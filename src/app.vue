@@ -5,7 +5,7 @@
   <div class="w-screen h-screen overflow-hidden flex flex-col">
     <NuxtLoadingIndicator color="#0ea5e9" />
     <AppNavBar />
-    <NuxtLayout class="scrollbar overflow-y-auto flex-1">
+    <NuxtLayout class="scrollbar overflow-hidden flex-1">
       <NuxtPage />
     </NuxtLayout>
   </div>
