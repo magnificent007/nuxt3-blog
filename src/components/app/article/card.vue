@@ -18,7 +18,8 @@ const props = defineProps({
     <article class="w-full rounded hover:shadow-md p-4 dark:bg-slate-900">
       <section class="flex flex-col flex-nowrap gap-4">
         <div v-if="article?.poster">
-          <img class="w-full bg-center bg-contain bg-no-repeat bg-slate-200" :src="article.poster" />
+          <!-- <img class="w-full bg-center bg-contain bg-no-repeat bg-slate-200" :src="article.poster" /> -->
+          <LazyImg :url="article.poster" />
         </div>
         <div class="flex-1 flex flex-col overflow-hidden">
           <h2 class="relative text-lg pl-3.5 font-semibold font-display tracking-tight text-gray-800 dark:text-gray-100 group-hover:text-sky-500 flex justify-between items-center">

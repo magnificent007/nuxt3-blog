@@ -2,6 +2,7 @@
 const page = ref(1)
 const total = ref<any>([])
 const pageCount = 5
+const waterfall = ref<any>(null)
 
 
 // await getAllArticles()
@@ -25,7 +26,16 @@ function waterfallData (arts: Array<Record<string, any>>) {
   <ClientOnly fallback-tag="div">
     <ContentQuery path="/" :skip="(page - 1) * pageCount">
       <template #default="{ data }">
-        <Waterfall style="background-color: transparent;" :hasAroundGutter="false" :gutter="16" :breakpoints="{ 480: { rowPerView: 1 }, 1024: { rowPerView: 2 }, 1920: { rowPerView: 3 } }" :list="waterfallData(data)">
+        <Waterfall 
+          ref="waterfall" 
+          style="background-color: transparent;" 
+          :lazyload="true" 
+          :crossOrigin="false"
+          :hasAroundGutter="false" 
+          :gutter="16" 
+          :breakpoints="{ 480: { rowPerView: 1 }, 1024: { rowPerView: 2 }, 1920: { rowPerView: 3 } }" 
+          :list="waterfallData(data)"
+        >
           <template #default="{ item, url, index }">
             <AppArticleCard :article="item.article" />
           </template>

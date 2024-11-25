@@ -26,7 +26,7 @@ function goGithubLink() {
 </script>
 
 <template>
-  <Menubar class="h-16 pr-4 lg:pr-20 dark:bg-slate-900!">
+  <Menubar class="h-16 pr-4 lg:pr-20 dark:bg-slate-900">
     <template #start>
       <AppNavLogo />
     </template>
