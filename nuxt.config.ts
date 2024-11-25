@@ -1,4 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import Material from '@primevue/themes/material'
+import Aura from '@primevue/themes/aura'
+import Lara from '@primevue/themes/lara'
+import Noir from './presets/Noir'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
@@ -14,10 +19,30 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@nuxt/ui', '@nuxt/content', '@pinia/nuxt'],
+  modules: [
+    '@nuxt/ui',
+    '@nuxt/content',
+    '@pinia/nuxt',
+    '@primevue/nuxt-module',
+    '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt'
+  ],
 
   pinia: {
     storesDirs: ['./src/stores/*.{ts,js,mts,mjs}']
+  },
+
+  primevue: {
+    options: {
+      theme: {
+        preset: Noir,
+        options: {
+          prefix: 'nuxt-app',
+          darkModeSelector: '.nuxt-app-dark',
+          cssLayer: false
+        }
+      }
+    }
   },
 
   srcDir: 'src/',

@@ -5,10 +5,10 @@ import { navigateTo } from 'nuxt/app'
 
 <template>
   <div
-    class="h-12 leading-12 my-auto flex items-center justify-center whitespace-nowrap overflow-hidden"
+    class="w-auto h-12 leading-12 my-auto flex items-center justify-center whitespace-nowrap overflow-hidden"
   >
-    <img class="h-8 mr-2 cursor-pointer" src="~/assets/images/logo.jpg" alt="logo丢失..." @click="async () => await navigateTo({ path: '/' })" />
-    <h2 class="text-xl font-bold mb-0">Cheems' Blog</h2>
+    <Avatar class="mr-2 cursor-pointer overflow-hidden" image="/images/avatar.jpg" alt="avatar lost..." @click="async () => await navigateTo({ path: '/' })" />
+    <h2 class="text-xl font-bold mb-0 hidden xs:block">Cheems' Blog</h2>
   </div>
 </template>
 

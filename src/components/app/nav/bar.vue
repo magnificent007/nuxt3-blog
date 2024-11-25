@@ -2,25 +2,57 @@
 const links = [
   {
     label: '首页',
-    to: '/',
-    click: () => {
-      isExpand.value = false
-    }
+    to: '/'
   },
   {
     label: '文章',
-    to: '/articles',
-    click: () => {
-      isExpand.value = false
-    }
+    to: '/articles'
   }
 ]
 
-const isExpand = ref(false)
+const isExpand = ref<boolean>(false)
+const iconClass = ref<string>('pi-sun')
+
+function onThemeToggler() {
+  const root = document.getElementsByTagName('html')[0];
+
+  root.classList.toggle('nuxt-app-dark');
+  iconClass.value = iconClass.value === 'pi-moon' ? 'pi-sun' : 'pi-moon';
+}
+
+function goGithubLink() {
+  window.open('https://github.com/magnificent007/nuxt3-blog')
+}
 </script>
 
 <template>
-  <div :class="['w-full h-20 xs:h-32 border-b border-gray-200 dark:border-gray-800']">
+  <Menubar class="h-16 pr-4 lg:pr-20 dark:bg-slate-900">
+    <template #start>
+      <AppNavLogo />
+    </template>
+    <template #end>
+      <div class="flex items-center gap-2">
+        <button type="button"
+          class="inline-flex w-7 h-7 p-0 items-center justify-center surface-0 dark:surface-800 border border-surface-200 dark:border-surface-600 rounded"
+        >
+          <i class="dark:text-white pi pi-search" />
+        </button>
+        <button type="button"
+          class="inline-flex w-7 h-7 p-0 items-center justify-center surface-0 dark:surface-800 border border-surface-200 dark:border-surface-600 rounded"
+          @click="goGithubLink">
+          <i class="dark:text-white pi pi-github" />
+        </button>
+        <button type="button"
+          class="inline-flex w-7 h-7 p-0 items-center justify-center surface-0 dark:surface-800 border border-surface-200 dark:border-surface-600 rounded"
+          @click="onThemeToggler">
+          <i :class="`dark:text-white pi ${iconClass}`" />
+        </button>
+      </div>
+    </template>
+  </Menubar>
+
+
+  <!-- <div :class="['w-full h-20 xs:h-32 border-b border-gray-200 dark:border-gray-800']">
     <div :class="['fixed top-0 left-0 z-99 h-20 xs:h-32 bg-white box-border w-full mx-auto']">
       <div class="w-full">
         <div class="mx-auto xl:max-w-7xl h-20 flex justify-between px-4">
@@ -40,7 +72,7 @@ const isExpand = ref(false)
         </UHorizontalNavigation>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <USlideover v-model="isExpand">
     <UCard
@@ -81,8 +113,5 @@ const isExpand = ref(false)
   </USlideover>
 </template>
 
-<style lang="scss" scoped module>
-* {
-  scrollbar-width: none;
-}
+<style lang="scss" scoped>
 </style>
