@@ -2,7 +2,6 @@
 import Material from '@primevue/themes/material'
 import Aura from '@primevue/themes/aura'
 import Lara from '@primevue/themes/lara'
-import Noir from './presets/Noir'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
@@ -35,7 +34,7 @@ export default defineNuxtConfig({
   primevue: {
     options: {
       theme: {
-        preset: Noir,
+        preset: Lara,
         options: {
           prefix: 'nuxt-app',
           darkModeSelector: '.nuxt-app-dark',
