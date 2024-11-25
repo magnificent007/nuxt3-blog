@@ -7,7 +7,7 @@
     <AppNavBar />
     <div class="flex flex-1 overflow-hidden">
       <AppNavLeftAside />
-      <NuxtLayout class="w-full h-full overflow-y-auto p-4 flex-1 dark:bg-gray-800 box-border">
+      <NuxtLayout class="w-full h-full overflow-y-auto p-4 flex-1 dark:bg-slate-800 box-border">
         <NuxtPage />
       </NuxtLayout>
     </div>
