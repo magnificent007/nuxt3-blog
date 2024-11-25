@@ -23,7 +23,7 @@ const menus = [
 </script>
 
 <template>
-  <aside class="w-auto px-4 py-2 hidden md:block bg-zinc-50 dark:bg-slate-900">
+  <aside class="w-auto px-4 py-2 hidden md:block bg-slate-50 dark:bg-black">
     <TieredMenu class="bg-transparent border-0" :model="menus"></TieredMenu>
   </aside>
 </template>

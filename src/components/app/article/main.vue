@@ -53,4 +53,8 @@ function waterfallData (arts: Array<Record<string, any>>) {
 </template>
 
 <style lang='scss' scoped>
+.animate__animated {
+  animation-fill-mode: both;
+  animation-duration: 1s;
+}
 </style>

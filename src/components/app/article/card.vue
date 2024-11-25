@@ -15,7 +15,7 @@ const props = defineProps({
 
 <template>
   <NuxtLink :to="article._path">
-    <article class="w-full rounded hover:shadow-md p-4 dark:bg-slate-900">
+    <article class="w-full rounded hover:shadow-md p-4 bg-zinc-50 dark:bg-slate-900">
       <section class="flex flex-col flex-nowrap gap-4">
         <div v-if="article?.poster">
           <!-- <img class="w-full bg-center bg-contain bg-no-repeat bg-slate-200" :src="article.poster" /> -->

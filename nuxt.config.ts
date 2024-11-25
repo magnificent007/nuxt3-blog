@@ -23,7 +23,6 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@pinia/nuxt',
     '@primevue/nuxt-module',
-    '@nuxtjs/tailwindcss',
     '@vueuse/nuxt'
   ],
 
