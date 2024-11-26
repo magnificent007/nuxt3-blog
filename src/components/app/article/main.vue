@@ -1,17 +1,16 @@
 <script lang='ts' setup>
 const page = ref(1)
 const total = ref<any>([])
-const pageCount = 5
+const pageSize = 12
 const waterfall = ref<any>(null)
 
 
-// await getAllArticles()
+await getAllArticles()
 
-// async function getAllArticles() {
-//   const { data: articles } = await useAsyncData('articles', () => queryContent('/').find(), { server: true })
-//   total.value = articles.value
-//   console.log(total.value)
-// }
+async function getAllArticles() {
+  const { data: articles } = await useAsyncData('articles', () => queryContent('/').find(), { server: true })
+  total.value = articles.value
+}
 
 function waterfallData (arts: Array<Record<string, any>>) {
   const list = []
@@ -24,7 +23,7 @@ function waterfallData (arts: Array<Record<string, any>>) {
 
 <template>
   <ClientOnly fallback-tag="div">
-    <ContentQuery path="/" :skip="(page - 1) * pageCount">
+    <ContentQuery path="/" :limit="pageSize" :skip="(page - 1) * pageSize">
       <template #default="{ data }">
         <Waterfall 
           ref="waterfall" 
@@ -40,7 +39,7 @@ function waterfallData (arts: Array<Record<string, any>>) {
             <AppArticleCard :article="item.article" />
           </template>
         </Waterfall>
-        <!-- <AppArticlePagination class="hidden sm:flex" :page="page" :pageCount="pageCount" :total="total ?? []" @update:page="(e: number) => page = e" v-if="data.length" /> -->
+        <AppArticlePagination :pageSize="pageSize" :total="total.length" @update:page="(e: number) => page = e" v-if="data.length" />
       </template>
       <template #not-found>
         <p>空空如也~</p>

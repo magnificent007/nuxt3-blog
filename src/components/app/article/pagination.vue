@@ -1,5 +1,5 @@
 <script lang='ts' setup>
-const emit = defineEmits(['update:page'])
+const emits = defineEmits(['update:page'])
 
 defineProps({
   page: {
@@ -7,32 +7,32 @@ defineProps({
     default: 1
   },
   total: {
-    type: Array<any>,
-    default: () => []
-  },
-  pageCount: {
     type: Number,
-    default: 5
+    default: 0
+  },
+  pageSize: {
+    type: Number,
+    default: 10
   }
 })
 </script>
 
 <template>
-  <UPagination 
-    :ui="{ wrapper: 'justify-center' }"
-    :active-button="{ variant: 'outline', color: 'sky' }"
-    :prev-button="{ label: '上一页', color: 'gray' }"
-    :next-button="{ trailing: true, label: '下一页', color: 'gray' }"
-    :first-button="{ label: '首页', color: 'gray' }"
-    :last-button="{ trailing: true, label: '尾页', color: 'gray' }"
-    show-first
-    show-last
-    :modelValue="page"
-    @update:modelValue="(e: number) => emit('update:page', e)"
-    :page-count="pageCount" 
-    :total="total.length" 
-    size="xs"
-  />
+  <div class="w-full">
+    <Paginator class="mx-auto" :rows="pageSize" :totalRecords="total" @page="({page}) => emits('update:page', page + 1)">
+      <template #container="{ first, last, page, pageCount, firstPageCallback, lastPageCallback, prevPageCallback, nextPageCallback, totalRecords }">
+        <div class="flex items-center gap-4 bg-transparent rounded-full py-1 px-2 justify-center">
+          <Button icon="pi pi-angle-double-left" rounded text size="small" severity="secondary" @click="firstPageCallback" :disabled="page === 0" />
+          <Button icon="pi pi-angle-left" rounded text size="small" severity="secondary" @click="prevPageCallback" :disabled="page === 0" />
+          <div class="text-color font-medium">
+            <span class="">{{ page + 1 }} / {{ pageCount }}</span>
+          </div>
+          <Button icon="pi pi-angle-right" rounded text size="small" severity="secondary" @click="nextPageCallback" :disabled="page === pageCount! - 1" />
+          <Button icon="pi pi-angle-double-right" rounded text size="small" severity="secondary" @click="lastPageCallback" :disabled="page === pageCount! - 1" />
+        </div>
+      </template>
+    </Paginator>
+  </div>
 </template>
 
 <style lang='scss' scoped>
