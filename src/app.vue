@@ -7,8 +7,9 @@
     <AppNavBar />
     <div class="flex flex-1 overflow-hidden">
       <AppNavLeftAside />
-      <NuxtLayout class="w-full h-full overflow-y-auto p-4 flex-1 dark:bg-slate-800 box-border">
+      <NuxtLayout class="w-full h-full overflow-y-auto p-4 flex-1 dark:bg-slate-800">
         <NuxtPage />
+        <ScrollTop target="parent" icon="pi pi-arrow-up" :buttonProps="{ severity: 'contrast', raised: true, rounded: true }" />
       </NuxtLayout>
     </div>
   </div>
@@ -22,8 +23,12 @@ html {
 }
 
 * {
-  scrollbar-width: thin;
+  scrollbar-width: none;
   scrollbar-gutter: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .page-enter-active,
@@ -39,17 +44,5 @@ html {
 .page-enter-from {
   opacity: 0;
   transform: translateY(5px);
-}
-
-:root {}
-
-:root[class~='nuxt-app-dark'] {
-  button[type='button'] {
-    border-color: var(--nuxt-app-surface-700);
-
-    &:hover {
-      border-color: var(--nuxt-app-surface-50);
-    }
-  }
 }
 </style>

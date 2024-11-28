@@ -19,11 +19,11 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    '@nuxt/ui',
     '@nuxt/content',
     '@pinia/nuxt',
     '@primevue/nuxt-module',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@nuxtjs/tailwindcss'
   ],
 
   pinia: {

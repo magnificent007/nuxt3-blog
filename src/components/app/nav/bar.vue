@@ -33,19 +33,19 @@ function goGithubLink() {
     <template #end>
       <div class="flex items-center gap-2">
         <button type="button"
-          class="inline-flex w-7 h-7 p-0 items-center justify-center surface-0 dark:surface-800 border border-surface-200 dark:border-surface-600 rounded"
+          class="inline-flex w-7 h-7 p-0 items-center justify-center rounded dark:active:bg-slate-50 dark:active:bg-opacity-20"
         >
-          <i class="dark:text-white pi pi-search" />
+          <i class="pi pi-search" />
         </button>
         <button type="button"
-          class="inline-flex w-7 h-7 p-0 items-center justify-center surface-0 dark:surface-800 border border-surface-200 dark:border-surface-600 rounded"
+          class="inline-flex w-7 h-7 p-0 items-center justify-center rounded dark:active:bg-slate-50 dark:active:bg-opacity-20"
           @click="goGithubLink">
-          <i class="dark:text-white pi pi-github" />
+          <i class="pi pi-github" />
         </button>
         <button type="button"
-          class="inline-flex w-7 h-7 p-0 items-center justify-center surface-0 dark:surface-800 border border-surface-200 dark:border-surface-600 rounded"
+          class="inline-flex w-7 h-7 p-0 items-center justify-center rounded dark:active:bg-slate-50 dark:active:bg-opacity-20"
           @click="onThemeToggler">
-          <i :class="`dark:text-white pi ${iconClass}`" />
+          <i :class="`pi ${iconClass}`" />
         </button>
       </div>
     </template>
@@ -74,7 +74,7 @@ function goGithubLink() {
     </div>
   </div> -->
 
-  <USlideover v-model="isExpand">
+  <!-- <USlideover v-model="isExpand">
     <UCard
       class="flex flex-col flex-1"
       :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }"
@@ -110,7 +110,7 @@ function goGithubLink() {
         <div class="h-8"></div>
       </template>
     </UCard>
-  </USlideover>
+  </USlideover> -->
 </template>
 
 <style lang="scss" scoped>

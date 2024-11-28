@@ -25,7 +25,7 @@ defineProps({
           <Button icon="pi pi-angle-double-left" rounded text size="small" severity="secondary" @click="firstPageCallback" :disabled="page === 0" />
           <Button icon="pi pi-angle-left" rounded text size="small" severity="secondary" @click="prevPageCallback" :disabled="page === 0" />
           <div class="text-color font-medium">
-            <span class="">{{ page + 1 }} / {{ pageCount }}</span>
+            <span class="text-sm text-slate-900 dark:text-slate-50">{{ page + 1 }} / {{ pageCount }}</span>
           </div>
           <Button icon="pi pi-angle-right" rounded text size="small" severity="secondary" @click="nextPageCallback" :disabled="page === pageCount! - 1" />
           <Button icon="pi pi-angle-double-right" rounded text size="small" severity="secondary" @click="lastPageCallback" :disabled="page === pageCount! - 1" />

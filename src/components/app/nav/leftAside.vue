@@ -6,18 +6,14 @@ const menus = [
     route: '/',
     command: () => useRouter().push('/')
   },
-  // {
-  //   label: '文章',
-  //   icon: 'pi pi-file',
-  //   route: '/articles',
-  //   command: () => useRouter().push('/articles')
-  // },
   {
     separator: true
   },
   {
     label: '关于',
-    icon: 'pi pi-user'
+    icon: 'pi pi-user',
+    route: '/about',
+    command: () => useRouter().push('/about')
   }
 ]
 </script>
