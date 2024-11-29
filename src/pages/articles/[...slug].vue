@@ -14,7 +14,7 @@ definePageMeta({
               <div>
                 <span class="text-sm text-zinc-400">{{ doc?.published }}</span>
               </div>
-              <span class="flex justify-end items-center text-sm text-zinc-400 dark:active:text-white cursor-pointer" @click="$router.back()">
+              <span class="flex justify-end items-center text-sm text-zinc-400 dark:active:text-white cursor-pointer" @click="$router.push('/')">
                 <i class="pi pi-angle-double-left text-inherit pr-1" />
                 返回 
               </span>
