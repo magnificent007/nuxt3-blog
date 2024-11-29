@@ -1,4 +1,6 @@
 <script setup>
+const articleStore = useArticleStore()
+await articleStore.getAllArticles()
 </script>
 
 <template>

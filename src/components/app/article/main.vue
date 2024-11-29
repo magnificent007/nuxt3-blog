@@ -3,7 +3,6 @@ const page = ref(1)
 const pageSize = 9
 
 const articleStore = useArticleStore()
-await articleStore.getAllArticles()
 </script>
 
 <template>
