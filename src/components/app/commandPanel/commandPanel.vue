@@ -107,7 +107,4 @@ defineExpose({
 </template>
 
 <style lang="scss" scoped>
-:global(.p-dialog-content) {
-  padding: 1.5rem;
-}
 </style>

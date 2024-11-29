@@ -76,5 +76,15 @@ export const Noir = definePreset(Lara, {
         }
       }
     }
+  },
+  components: {
+    dialog: {
+      extend: {},
+      css: ({ dt }) => `
+        .p-dialog-content {
+          padding: ${dt('dialog.header.padding')};
+        }
+      `
+    }
   }
 })
