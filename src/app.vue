@@ -3,7 +3,7 @@
 
 <template>
   <div class="w-screen h-screen flex flex-col">
-    <NuxtLoadingIndicator color="#0ea5e9" />
+    <NuxtLoadingIndicator color="#00c678" />
     <AppNavBar />
     <div class="flex flex-1 overflow-hidden">
       <AppNavLeftAside />
