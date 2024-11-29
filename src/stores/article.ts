@@ -1,16 +1,21 @@
-import type { NavItem } from '@nuxt/content'
+import type { NavItem, ParsedContent } from '@nuxt/content'
 
 export const useArticleStore = defineStore('article', () => {
-  const articles = ref<Array<NavItem>>([])
+  const articles = ref<Array<ParsedContent>>([])
 
-  const setArticlesByCategory = (arts: NavItem[] | []) => {
-    articles.value = arts
-    console.log('articles', articles.value)
+  async function getAllArticles() {
+    const { data: total } = await useAsyncData('articles', () => queryContent('/').find(), { server: true })
+    articles.value = total.value ?? []
+  }
+
+  function queryArticlesByCondition(condition: string) {
+    return articles.value.filter((file: ParsedContent) => file.title?.includes(condition.trim()) || file.category?.includes(condition.trim()))
   }
 
   return {
     articles,
-    setArticlesByCategory
+    getAllArticles,
+    queryArticlesByCondition
   }
 })
 
