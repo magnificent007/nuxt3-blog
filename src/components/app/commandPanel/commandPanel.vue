@@ -59,7 +59,7 @@ defineExpose({
     modal 
     dismissableMask
   >
-    <div class="flex flex-nowrap flex-col justify-center">
+    <div class="pt-6 flex flex-nowrap flex-col justify-center">
       <FloatLabel variant="on">
         <IconField>
           <InputIcon class="pi pi-search" />
