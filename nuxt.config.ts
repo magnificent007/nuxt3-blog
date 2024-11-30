@@ -21,7 +21,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@primevue/nuxt-module',
     '@vueuse/nuxt',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    'dayjs-nuxt'
   ],
 
   pinia: {
@@ -60,6 +61,24 @@ export default defineNuxtConfig({
     },
     navigation: {
       fields: ['_id', 'title', 'description', 'published', 'poster', 'author']
+    },
+    experimental: {
+      search: {
+        indexed: true,
+        options: {
+          fields: ['title', 'description', 'content'],
+          storeFields: ['title', 'description', 'content'],
+          searchOptions: {
+            prefix: true,
+            fuzzy: 0.2,
+            boost: {
+              title: 4,
+              description: 2,
+              content: 1
+            }
+          }
+        }
+      }
     }
   },
 

@@ -8,8 +8,10 @@ export const useArticleStore = defineStore('article', () => {
     articles.value = total.value ?? []
   }
 
-  function queryArticlesByCondition(condition: string) {
-    return articles.value.filter((file: ParsedContent) => file.title?.includes(condition.trim()) || file.category?.includes(condition.trim()))
+  async function queryArticlesByCondition(condition: string) {
+    return (await searchContent(
+      condition.trim()
+    )).value
   }
 
   return {

@@ -7,12 +7,13 @@ await articleStore.getAllArticles()
   <div class="w-screen h-screen flex flex-col">
     <NuxtLoadingIndicator color="#00c678" />
     <AppNavBar />
-    <div class="flex flex-1 overflow-hidden">
+    <div class="flex flex-nowrap flex-1 overflow-hidden">
       <AppNavLeftAside />
       <NuxtLayout class="w-full h-full overflow-y-auto p-4 flex-1 dark:bg-slate-800">
         <NuxtPage />
         <ScrollTop target="parent" icon="pi pi-arrow-up" :buttonProps="{ severity: 'contrast', raised: true, rounded: true }" />
       </NuxtLayout>
+      <AppNavRightAside />
     </div>
   </div>
 </template>

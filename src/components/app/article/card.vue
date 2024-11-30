@@ -22,13 +22,13 @@ const props = defineProps({
           </span>
           <span class="w-full block truncate">{{ article.title || '无标题' }}</span>
         </h2>
-        <div class="flex-1 my-2 text-base text-zinc-500 dark:text-zinc-500 overflow-y-auto" style="aspect-ratio: 2/0.5 !important;">
+        <div class="flex-1 my-2 text-base text-zinc-500 overflow-y-auto" style="aspect-ratio: 2/0.5 !important;">
           {{ article.description }}
         </div>
       </div>
     </div>
     <div class="w-full flex flex-wrap justify-between items-center">
-      <span class="text-sm font-normal text-zinc-400 dark:text-gray-400">{{ article.published}}</span>
+      <span class="text-sm font-normal text-zinc-400">{{ article.published}}</span>
       <ButtonGroup>
         <Button text severity="secondary" size="small" @click="$router.push(`${article._path}`)">阅读</Button>
       </ButtonGroup>

@@ -1,14 +1,12 @@
 <script lang="ts" setup>
-import type { ParsedContent } from '@nuxt/content'
-
 const router = useRouter()
 const articleStore = useArticleStore()
 const visible = ref<boolean>(false)
 const inputValue = ref<string>('')
 const results = ref<any[]>([])
 
-watch(() => inputValue.value, inputValue => {
-  results.value = onSearch(inputValue)
+watch(() => inputValue.value, async inputValue => {
+  results.value = await onSearch(inputValue)
 })
 
 function updateDialogVisible (v: boolean) {
@@ -17,16 +15,16 @@ function updateDialogVisible (v: boolean) {
   results.value = []
 }
 
-function onSearch (q: string) {
+async function onSearch (q: string) {
   if (!q.length) return []
-  const results = articleStore.queryArticlesByCondition(q)
-  return results.map((item: ParsedContent) => ({
-    id: item._id,
+  const results = await articleStore.queryArticlesByCondition(q)
+  return results.map((item: Record<string, any>) => ({
+    id: item.id,
     label: item.title,
     click: async () => {
-      item?._path && await router.push(item._path)
+      item?.id && await router.push(item.id)
     },
-    to: item._path
+    to: item.id
   }))
 }
 
@@ -75,14 +73,14 @@ defineExpose({
           />
           <InputIcon class="pi pi-times cursor-pointer" v-show="inputValue.length" @click="inputValue = ''" />
         </IconField>
-        <label for="search_label">查找文档</label>
+        <label>查找文档</label>
       </FloatLabel>
       <Divider />
       <div class="w-full">
         <template v-if="results.length">
           <div 
-            class="p-2 flex flex-nowrap justify-between items-center truncate cursor-pointer rounded active:hover:bg-slate-200 active:bg-opacity-20 lg:hover:bg-slate-200 lg:hover:bg-opacity-20"
-            v-for="{ id, label, click, to } in onSearch(inputValue)" 
+            class="p-2 flex flex-nowrap justify-between items-center gap-8 overflow-hidden truncate cursor-pointer rounded active:hover:bg-slate-200 active:bg-opacity-20 lg:hover:bg-slate-200 lg:hover:bg-opacity-20"
+            v-for="{ id, label, click, to } in results" 
             :key="id"
             @click="onSelect({ id, label, click, to })"
           >

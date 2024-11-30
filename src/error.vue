@@ -30,17 +30,15 @@ function goBack() {
 
 <template>
   <main class="h-screen flex flex-col justify-center items-center">
-    <UContainer class="text-center">
-      <h1 class="text-lg font-bold">
-        {{ error.statusCode  }}
-      </h1>
-      <p class="text-2xl">
-        {{ error.message }}
-      </p>
-      <div class="flex justify-center gap-2">
-        <UButton color="violet" variant="link" @click="handleError">go home</UButton>
-        <UButton color="violet" variant="link" @click="goBack">go back</UButton>
-      </div>
-    </UContainer>
+    <h1 class="text-lg font-bold">
+      {{ error.statusCode  }}
+    </h1>
+    <p class="text-2xl">
+      {{ error.message }}
+    </p>
+    <div class="flex justify-center gap-2">
+      <Button @click="handleError">go home</Button>
+      <Button @click="goBack">go back</Button>
+    </div>
   </main>
 </template>
