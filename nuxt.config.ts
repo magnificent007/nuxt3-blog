@@ -82,6 +82,12 @@ export default defineNuxtConfig({
     }
   },
 
+  nitro: {
+    prerender: {
+      routes: ['/sitemap.xml']
+    }
+  },
+
   devServer: {
     host: '0.0.0.0',
     port: 5173
